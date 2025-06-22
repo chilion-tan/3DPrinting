@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIY: Recycling an Unused Sink Support</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            border-left: 1px solid #333;
+            border-right: 1px solid #333;
+            position: relative;
+        }
+        
+        h1 {
+            color: #4fc3f7;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+        
+        .post-meta {
+            color: #ffeb3b;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .content-with-image {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 30px 0;
+        }
+        
+        .text-content {
+            flex: 1;
+            padding-right: 20px;
+        }
+        
+        .media-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .image-box {
+            width: 120px;
+            height: 120px;
+            border: 1px solid #333;
+            margin: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1e1e1e;
+        }
+        
+        .tall-image-box {
+            width: 110px;
+            height: 220px;
+            border: 1px solid #333;
+            margin: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1e1e1e;
+        }
+        
+        .image-box img, .tall-image-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .video-container {
+            width: 100%;
+            margin: 30px 0;
+        }
+        
+        video {
+            width: 100%;
+            background-color: #000;
+            cursor: pointer;
+            max-height: 400px;
+        }
+        
+        .cost-highlight {
+            color: #ffeb3b;
+            font-weight: bold;
+            background-color: #1e1e1e;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        
+        footer {
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            font-size: 0.8em;
+            color: #b0bec5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Recycling an Unused Sink Support</h1>
+        
+        <div class="post-meta">
+            Posted on: 22 Jun 2025 | Author: Chilion Tan
+        </div>
+        
+        <div class="media-container">
+            <div class="image-box">
+                <img src="media/BallJoint.jpg" alt="Sink support design">
+            </div>
+        </div>
+
+        <div class="content-with-image">
+            <div class="text-content">
+                <p>In my latest DIY project, I designed a simple ball joint to connect aluminum tubes to form a rectangular structure that would support an unused sink platform. This creative solution allowed me to repurpose materials that would otherwise go to waste.</p>
+                
+                <p>As a fellow citizen of Gaia, I'm always looking for ways to reduce waste and minimize my environmental impact. This project not only prevented a perfectly good sink from becoming landfill material but also saved me money in the process.</p>
+            </div>
+            
+            <div class="tall-image-box">
+                <img src="media/StandForSink.jpg" alt="Closeup of custom ball joint">
+            </div>
+        </div>
+        
+        <div class="video-container">
+            <video controls autoplay muted playsinline loop>
+                <source src="media/SimpleBallJoint.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        
+        <p>The aluminum tube structure provides excellent stability while remaining lightweight. The ball joint design allows for easy adjustment during installation, ensuring a perfect fit for the sink platform.</p>
+        
+        <div class="cost-highlight">
+            Total material cost: Less than SG$32
+        </div>
+        
+        <p>This project demonstrates how a little creativity and basic engineering principles can turn what might be considered waste into a functional, cost-effective solution. I encourage others to look at unused items in their homes with fresh eyes - you might discover their hidden potential!</p>
+        
+        <footer>
+            © 2025 Chilion Tan | DIY Engineering Blog
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('video');
+            
+            function tryPlayVideo() {
+                video.play().catch(e => {
+                    console.log('Autoplay prevented:', e);
+                    video.controls = true;
+                });
+            }
+            
+            tryPlayVideo();
+            
+            video.addEventListener('click', function() {
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
