@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIY: Recycling an Unused Sink Support</title>
+    <title>DIY Engineering Blog</title>
     <style>
         body {
             background-color: #121212;
@@ -13,7 +13,6 @@
             margin: 0;
             padding: 20px;
         }
-        
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -22,42 +21,35 @@
             border-right: 1px solid #333;
             position: relative;
         }
-        
         h1 {
             color: #4fc3f7;
             border-bottom: 1px solid #333;
             padding-bottom: 10px;
         }
-        
         .post-meta {
             color: #ffeb3b;
             font-size: 0.9em;
             margin-bottom: 30px;
         }
-        
         p {
             margin-bottom: 15px;
         }
-        
         .content-with-image {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             margin: 30px 0;
         }
-        
         .text-content {
             flex: 1;
             padding-right: 20px;
         }
-        
         .media-container {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
             margin: 30px 0;
         }
-        
         .image-box {
             width: 120px;
             height: 120px;
@@ -69,37 +61,52 @@
             justify-content: center;
             background-color: #1e1e1e;
         }
-        
-        .tall-image-box {
+        /* .tall-image-box {
             width: 350px;
-            height: 300px;
+            height: 450px;
             border: 1px solid #333;
             margin: 10px;
             overflow: hidden;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             background-color: #1e1e1e;
+        } */
+         .tall-image-box {
+            width: 300px;
+            /* Remove or change height: 300px; */
+            height: 450; /* Or just remove it */ 
+            border: 1px solid #333;
+            margin: 10px;
+            /* overflow: hidden; /* Only keep if you still want to crop anything beyond the image itself */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers items horizontally */
+            /* Remove justify-content: center; if you want items to stack from top */
+            background-color: #1e1e1e;
         }
-        
-        .image-box img, .tall-image-box img {
+        .tall-image-box img {
+          width: 100%; /* Make image take up 100% width of its parent */
+          height: 100%; /* Make image take up 100% height of its parent */
+          object-fit: cover; /* Or 'cover', depending on desired behavior */
+        }
+      
+        .image-box img{
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
         }
-        
         .video-container {
             width: 100%;
             margin: 30px 0;
         }
-        
         video {
             width: 100%;
             background-color: #000;
             cursor: pointer;
             max-height: 400px;
         }
-        
         .cost-highlight {
             color: #ffeb3b;
             font-weight: bold;
@@ -109,7 +116,6 @@
             display: inline-block;
             margin: 10px 0;
         }
-        
         footer {
             margin-top: 40px;
             border-top: 1px solid #333;
@@ -117,75 +123,382 @@
             font-size: 0.8em;
             color: #b0bec5;
         }
+        /* Navigation styles */
+        .navigation {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .nav-list li {
+            cursor: pointer;
+            color: #4fc3f7;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        .nav-list li.active {
+            color: #ffeb3b;
+            text-decoration: underline;
+            opacity: 0.5;
+            cursor: pointer; /* Make sure cursor is pointer for all */
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 1.5em;
+            color: #b0bec5;
+            cursor: pointer;
+            z-index: 10;
+            background: none;
+            border: none;
+        }
+        .post-content {
+            position: relative;
+            background: #181818;
+            border-radius: 8px;
+            margin-bottom: 32px;
+            box-shadow: 0 2px 12px #0004;
+            /* Animation for showing */
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.4s cubic-bezier(.4,2,.6,1), transform 0.9s cubic-bezier(.4,2,.6,1);
+        }
+        .post-content.animating-in {
+            opacity: 0;
+            transform: translateY(-40px);
+        }
+        .hidden {
+            display: none !important;
+        }
+        .cta-global-btn {
+            display: inline-block;
+            margin: 12px 0 10px 0;
+            padding: 8px 20px;
+            background: red;
+            color: #2196f3;
+            font-weight: bold;
+            font-size: 1.15em;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 2px 8px #0004;
+            transition: background 0.2s;
+            text-align: center;
+        }
+        .cta-global-btn:hover {
+            background: #b71c1c;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Recycling an Unused Sink Support</h1>
-        
-        <div class="post-meta">
-            Posted on: 22 Jun 2025 | Author: Chilion Tan
-        </div>
-        
-        <div class="media-container">
-            <div class="image-box">
-                <img src="media/BallJoint.jpg" alt="Sink support design">
-            </div>
+        <nav class="navigation">
+            <ul class="nav-list" id="nav-list">
+                <!-- Navigation items will be injected here -->
+            </ul>
+        </nav>
+        <div id="posts-container">
+            <!-- Posts will be injected here -->
         </div>
 
-        <div class="content-with-image">
-            <div class="text-content">
-                <p>In my latest DIY project, I designed a simple ball joint to connect aluminum tubes to form a rectangular structure that would support an unused sink platform. This creative solution allowed me to repurpose materials that would otherwise go to waste.</p>
-                
-                <p>As a fellow citizen of Gaia, I'm always looking for ways to reduce waste and minimize my environmental impact. This project not only prevented a perfectly good sink from becoming landfill material but also saved me money in the process.</p>
-            </div>
-            
-            <div class="tall-image-box">
-                <img src="media/StandForSink.jpg" alt="Closeup of custom ball joint">
-            </div>
-        </div>
-        
-        <div class="video-container">
-            <video controls autoplay muted playsinline loop>
-                <source src="media/SimpleBallJoint.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-        
-        <p>The aluminum tube structure provides excellent stability while remaining lightweight. The ball joint design allows for easy adjustment during installation, ensuring a perfect fit for the sink platform.</p>
-        
-        <div class="cost-highlight">
-            Total material cost: Less than SG$32
-        </div>
-        
-        <p>This project demonstrates how a little creativity and basic engineering principles can turn what might be considered waste into a functional, cost-effective solution. I encourage others to look at unused items in their homes with fresh eyes - you might discover their hidden potential!</p>
-        
         <footer>
-            © 2025 Chilion Tan | DIY Engineering Blog
+            © 2025 Chilion Tan | Unixon Engineering Blog
         </footer>
     </div>
 
+    <!-- Floating draggable "To Top" button -->
+    <button id="toTopBtn" style="
+        position: fixed;
+        bottom: 50%;
+        right: 40px;
+        z-index: 9999;
+        background: #4fc3f7;
+        color: #222;
+        border: none;
+        border-radius: 50%;
+        width: 56px;
+        height: 56px;
+        font-size: 2em;
+        box-shadow: 0 2px 8px #0008;
+        cursor: grab;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+    " title="Go to Navigation">&#8679;</button>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const video = document.querySelector('video');
-            
-            function tryPlayVideo() {
-                video.play().catch(e => {
-                    console.log('Autoplay prevented:', e);
-                    video.controls = true;
+    // --- Artificial JSON data block for 3 posts ---
+    const postsData = [
+        {
+            title: "Recycling Sink Support",
+            date: "22 Jun 2025",
+            img1: "media/BallJoint.jpg",
+            img2: "media/StandForSink.jpg",
+            video1: "media/SimpleBallJoint.mp4",
+            textContent: `<p>In one of my 3D printing DIY project, I designed a simple ball joint to connect aluminum tubes to form a rectangular structure that would support an unused sink platform. This creative solution allowed me to repurpose materials that would otherwise go to waste.</p>
+                <p>As a fellow citizen of Gaia, I'm always looking for ways to reduce waste and minimize my environmental impact. This project not only prevented a perfectly good sink from becoming landfill material but also saved me money in the process.
+                The aluminum tube structure provides excellent stability while remaining lightweight. The ball joint design allows for easy adjustment during installation, ensuring a perfect fit for the sink platform.</p>`,
+            destProdctId: "BallRackJoint",
+            costHighlight: "Total aluminium tubes cost about SG$20, excluding 3D printed ball joints",
+            conclusion: "This project demonstrates how a little creativity and basic engineering principles can turn what might be considered waste into a functional, cost-effective solution. I encourage others to look at unused items in their homes with fresh eyes - you might discover their hidden potential!"
+        },
+        {
+            title: "Lampshade Dragon & Chinese Text",
+            date: "28 Jun 2025",
+            img1: "media/LampshadeDragonChineseText.jpg",
+            img2: "media/LampshadeChenChineseText.jpg",
+            video1: "media/LampshadeDragonChineseText.mp4",
+            textContent: `<p>This lambshade shows the mythical chinese dragon and the chinese text of dragon 龍 and surname 陳. A great gift to your love ones and friends.</p>
+                <p>“💖Let every flicker of light whisper their name. These custom lithophane lampshades transform tender moments into glowing tributes, casting love and memory across the room. A gift not just seen, but deeply felt.”</p>
+                <p> “🕊️“Delicate light, meaningful presence. Give a gift that glows with the name and image of someone special—a minimalist masterpiece that says everything without saying a word.” </p>`,
+            destProdctId: "LampshadeDragonChineseText", 
+            costHighlight: "Credit to https://lithophanemaker.com/index.html, it helped me created the lambshade",
+            conclusion: "Lampshades bearing the name of your love ones are unique gifts and are a great way to charm them. Light up their nights and turn cherished memories into a glowing keepsake. These personalized lithophane lampshades, crafted with the image and name of your loved one, don’t just light up a room—they warm the heart. Give a gift they’ll treasure, and be remembered every night when the light comes on"
+        },
+        {
+            title: "3D Animated Art",
+            date: "29 Jun 2025",
+            img1: "media/3DTextConsultingLogo4.png",
+            img2: "media/3DArtTextSolarSystem.jpg",
+            video1: "media/3DArtAnimationS.mp4",
+            textContent: `<p>This piece of 3D animated art was inspired by a public advertisement I saw in Johor Malaysia</p>
+                <p>The 3D design immediately caught my attention and its an effective way get attention. Watch at <a href="https://www.youtube.com/watch?v=1t5Qf8x2wdo">https://www.youtube.com/watch?v=1t5Qf8x2wdo</a></p>`,
+            destProdctId: "3DArtAnimation",
+            costHighlight: "Total material cost: Less than SG$0",
+            conclusion: "Simply Save the animated art video in a flash drive, youtube or powerpoint presentation and display it on  big TV. No need to print it out!"
+        },
+        {
+            title: "Hanging Peach Love Lantern Post",
+            date: "29 Jun 2025",
+            img1: "media/PeachLoveCutLaternLampPost.jpg",
+            img2: "media/LoveLaternLampPost.jpg",
+            video1: "media/PeachLoveLanternPost.mp4",
+            textContent: `<p>Invite harmony and heartfelt charm into your space with our one-of-a-kind Peach Lantern Lighting Post Fixture. 
+              <p>Designed to captivate and comfort, this exquisite piece features skillfully designed peach-shaped lanterns—each lovingly engraved with the word LOVE. As the lanterns softly glow, they cast a delicate, radiant light that transforms any room into a sanctuary of affection.</p>
+              <p>Bring light. Bring love. Let the Peach Lantern Lighting Post become the heartwarming beacon your family gathers around.</p>`,
+            destProdctId: "PeachLoveLanternPost",
+            costHighlight: "Illuminate Your Home with the Warmth of Love",
+            conclusion: "Perfect for living rooms, bedrooms, or cozy family nooks, this lantern post is more than décor—it’s a reminder that love flourishes where it’s seen and felt daily. Whether you’re gathering for a meal, reflecting after a long day, or enjoying quiet moments together this radiant piece will infuse your home with beauty and meaning.",
+        },
+        {
+            title: "Love Wall Light",
+            date: "29 Jun 2025",
+            img1: "media/LoveLoftWallLightWhite.jpg",
+            img2: "media/LoveLoftWallLight3Colors.jpg",
+            video1: "media/LoveLoftWallLight.mp4",
+            textContent: `<p> “🌹Say ‘I love you’ in a way words never could. With the soft glow of a wall lightings, every night becomes a quiet reminder of how deeply they’re cherished. Thoughtful. Beautiful. Unforgettable.” </p>
+                  <p>A unique gift that lights up their nights. Crafted with the declaration of your love, don’t just light up a room — it warms the heart. Get your loved one a wall light that says 'I love you' in a way words never could.</p>`,
+            destProdctId: "LoveLoftWallLight",
+            costHighlight: "Sold in white only. You may paint it or let the color of the bulb set the atmosphere.",
+            conclusion: "Give a gift they’ll treasure, and be remembered every night when the light comes on!"
+        }
+    ];
+
+    // --- Utility: get URL parameter ---
+    function getUrlParam(name) {
+        const url = new URL(window.location.href);
+        return url.searchParams.get(name);
+    }
+
+    function renderNavigation(posts, activeTitle) {
+        const navList = document.getElementById('nav-list');
+        navList.innerHTML = '';
+        posts.forEach((post, idx) => {
+            const li = document.createElement('li');
+            li.textContent = `${post.title} (${post.date})`;
+            li.dataset.title = post.title;
+            const openPostDiv = document.querySelector(`.post-content[data-title="${post.title}"]:not(.hidden)`);
+            if (openPostDiv) {
+                li.classList.add('active');
+                li.addEventListener('click', () => {
+                    // Scroll to the top of the open post
+                    openPostDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 });
+            } else {
+                li.addEventListener('click', () => showPost(post.title));
             }
-            
-            tryPlayVideo();
-            
-            video.addEventListener('click', function() {
-                if (video.paused) {
-                    video.play();
-                } else {
-                    video.pause();
-                }
-            });
+            navList.appendChild(li);
         });
+    }
+
+    // --- Show a post by title (insert above all others, don't close others) ---
+    function showPost(title) {
+        // Update URL parameter to last opened post
+        const url = new URL(window.location.href);
+        url.searchParams.set('title', title);
+        window.history.replaceState({}, '', url);
+
+        // If already open, do nothing
+        const existing = document.querySelector(`.post-content[data-title="${title}"]:not(.hidden)`);
+        if (existing) return;
+
+        // Find post data
+        const post = postsData.find(p => p.title === title);
+        if (!post) return;
+
+        // Create post element
+        const postDiv = document.createElement('div');
+        postDiv.className = 'post-content animating-in';
+        postDiv.dataset.title = post.title;
+
+        // Post content (without close button yet)
+        postDiv.innerHTML = `
+            <h1>${post.title}</h1>
+            <div class="post-meta">Posted on: ${post.date} | Author: Chilion Tan</div>
+            <div class="media-container">
+                <div class="image-box">
+                    <img src="${post.img1}" alt="Image 1">
+                </div>
+            </div>
+            <div class="content-with-image">
+                <div class="text-content">${post.textContent}</div>
+                <div class="tall-image-box">
+                    <img src="${post.img2}" alt="Image 2">
+                    <a href="https://unixonds.github.io/ShopsInSG/?StoreID=Merlion3DStudio&ProductID=${encodeURIComponent(post.destProdctId)}" class="cta-global-btn" target="_blank" rel="noopener noreferrer">
+                      Order This</a>
+                </div>
+            </div>
+            <div class="video-container">
+                <video controls autoplay muted playsinline loop>
+                    <source src="${post.video1}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="cost-highlight">${post.costHighlight}</div>
+            <p id="conclusion">${post.conclusion}</p>
+        `;
+
+        // Add call to action button for dynamically inserted post
+        // if (post.destProdctId) {
+        //     const ctaBtn = document.createElement('a');
+        //     ctaBtn.href = "https://unixonds.github.io/ShopsInSG/?StoreID=Merlion3DStudio&ProductID=" + encodeURIComponent(post.destProdctId);
+        //     ctaBtn.target = "_blank";
+        //     ctaBtn.rel = "noopener noreferrer";
+        //     ctaBtn.textContent = "Order This Project";
+        //     ctaBtn.className = "cta-global-btn";
+        //     postDiv.appendChild(ctaBtn);
+        // }
+
+        // Close button (inserted as first child)
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'close-btn';
+        closeBtn.innerHTML = '&times;';
+        closeBtn.title = 'Close';
+        closeBtn.onclick = function() {
+            postDiv.classList.add('hidden');
+            renderNavigation(postsData);
+        };
+        postDiv.insertBefore(closeBtn, postDiv.firstChild);
+
+        // Insert at the top of posts container
+        const postsContainer = document.getElementById('posts-container');
+
+        // Add thick horizontal line separator if there is already a post displayed
+        if (postsContainer.firstChild) {
+            const hr = document.createElement('hr');
+            hr.style.border = '0';
+            hr.style.height = '6px';
+            hr.style.background = '#444';
+            hr.style.margin = '32px 0 32px 0';
+            hr.style.borderRadius = '3px';
+            postsContainer.insertBefore(hr, postsContainer.firstChild);
+        }
+
+        postsContainer.insertBefore(postDiv, postsContainer.firstChild);
+
+        // Animate in
+        setTimeout(() => {
+            postDiv.classList.remove('animating-in');
+        }, 100);
+
+        // Update navigation highlight
+        renderNavigation(postsData);
+        renderGlobalCTA(postsData, title);
+    }
+
+    // --- Render global CTA button ---
+    function renderGlobalCTA(posts, activeTitle) {
+        const ctaContainer = document.getElementById('global-cta-btn-container');
+        ctaContainer.innerHTML = '';
+        // Find the first visible post (topmost opened)
+        const openPost = document.querySelector('.post-content:not(.hidden)');
+        if (!openPost) return;
+        const title = openPost.dataset.title;
+        const post = posts.find(p => p.title === title);
+        if (!post || !post.destProdctId) return;
+        const baseLink = "https://unixonds.github.io/ShopsInSG/?StoreID=Merlion3DStudio&ProductID=";
+        const ctaBtn = document.createElement('a');
+        ctaBtn.href = baseLink + encodeURIComponent(post.destProdctId);
+        ctaBtn.target = "_blank";
+        ctaBtn.rel = "noopener noreferrer";
+        ctaBtn.className = "cta-global-btn";
+        ctaBtn.textContent = "Order This Project";
+        ctaContainer.appendChild(ctaBtn);
+    }
+
+    // --- On page load ---
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get title from URL or default to first post
+        let activeTitle = getUrlParam('title');
+        if (!activeTitle || !postsData.some(p => p.title === activeTitle)) {
+            activeTitle = postsData[0].title;
+        }
+        renderNavigation(postsData, null);
+        //renderInitialPost(postsData, activeTitle);
+        showPost(activeTitle); // Show the post directly
+        renderGlobalCTA(postsData, activeTitle);
+
+        // Video play/pause on click for all videos
+        document.getElementById('posts-container').addEventListener('click', function(e) {
+            if (e.target.tagName === 'VIDEO') {
+                if (e.target.paused) e.target.play();
+                else e.target.pause();
+            }
+        });
+    });
+
+    // Floating draggable "To Top" button logic
+    (function() {
+        const btn = document.getElementById('toTopBtn');
+        let isDragging = false, offsetX = 0, offsetY = 0;
+
+        btn.addEventListener('mousedown', function(e) {
+            isDragging = true;
+            offsetX = e.clientX - btn.getBoundingClientRect().left;
+            offsetY = e.clientY - btn.getBoundingClientRect().top;
+            btn.style.cursor = 'grabbing';
+            document.body.style.userSelect = 'none';
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+            btn.style.right = 'auto';
+            btn.style.bottom = 'auto';
+            btn.style.left = (e.clientX - offsetX) + 'px';
+            btn.style.top = (e.clientY - offsetY) + 'px';
+        });
+
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
+            btn.style.cursor = 'grab';
+            document.body.style.userSelect = '';
+        });
+
+        btn.addEventListener('click', function() {
+            // Scroll to navigation
+            const nav = document.querySelector('.navigation');
+            if (nav) nav.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    })();
     </script>
 </body>
 </html>
+
