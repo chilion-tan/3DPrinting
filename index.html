@@ -3,501 +3,472 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIY Engineering Blog</title>
+    <title>3D Design and Printing Services</title>
     <style>
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
+        :root {
+            --dark-bg: #1a1a1a;
+            --primary-blue: #007bff;
+            --accent-yellow: #ffc107;
+            --light-text: #f8f9fa;
+            --secondary-text: #adb5bd;
+            --border-color: #343a40;
+            --danger-red: #dc3545;
+            --content-bg: #212529;
+            --header-bg: #2c3034;
         }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
-            border-left: 1px solid #333;
-            border-right: 1px solid #333;
-            position: relative;
         }
-        h1 {
-            color: #4fc3f7;
-            border-bottom: 1px solid #333;
-            padding-bottom: 10px;
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color);
         }
-        .post-meta {
-            color: #ffeb3b;
-            font-size: 0.9em;
-            margin-bottom: 30px;
+
+        #logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            animation: slow-vertical-spin 12s linear infinite;
+            margin-bottom: 20px;
         }
-        p {
-            margin-bottom: 15px;
+
+        @keyframes slow-vertical-spin {
+            from {
+                transform: rotateY(0deg);
+            }
+            to {
+                transform: rotateY(360deg);
+            }
         }
-        .content-with-image {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin: 30px 0;
-        }
-        .text-content {
-            flex: 1;
-            padding-right: 20px;
-        }
-        .media-container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin: 30px 0;
-        }
-        .image-box {
-            width: 120px;
-            height: 120px;
-            border: 1px solid #333;
-            margin: 10px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #1e1e1e;
-        }
-        /* .tall-image-box {
-            width: 350px;
-            height: 450px;
-            border: 1px solid #333;
-            margin: 10px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: #1e1e1e;
-        } */
-         .tall-image-box {
-            width: 300px;
-            /* Remove or change height: 300px; */
-            height: 450; /* Or just remove it */ 
-            border: 1px solid #333;
-            margin: 10px;
-            /* overflow: hidden; /* Only keep if you still want to crop anything beyond the image itself */
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Centers items horizontally */
-            /* Remove justify-content: center; if you want items to stack from top */
-            background-color: #1e1e1e;
-        }
-        .tall-image-box img {
-          width: 100%; /* Make image take up 100% width of its parent */
-          height: 100%; /* Make image take up 100% height of its parent */
-          object-fit: cover; /* Or 'cover', depending on desired behavior */
-        }
-      
-        .image-box img{
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        .video-container {
-            width: 100%;
-            margin: 30px 0;
-        }
-        video {
-            width: 100%;
-            background-color: #000;
-            cursor: pointer;
-            max-height: 400px;
-        }
-        .cost-highlight {
-            color: #ffeb3b;
-            font-weight: bold;
-            background-color: #1e1e1e;
-            padding: 5px 10px;
-            border-radius: 4px;
-            display: inline-block;
-            margin: 10px 0;
-        }
-        footer {
-            margin-top: 40px;
-            border-top: 1px solid #333;
-            padding-top: 20px;
-            font-size: 0.8em;
-            color: #b0bec5;
-        }
-        /* Navigation styles */
-        .navigation {
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #333;
-        }
-        .nav-list {
-            list-style: none;
-            padding: 0;
+
+        #site-title {
+            font-size: 2.5em;
+            color: var(--light-text);
             margin: 0;
+        }
+
+        #intro {
+            font-size: 1.2em;
+            color: var(--secondary-text);
+            margin: 10px 0 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #whatsapp-link {
+            display: inline-block;
+            background-color: var(--danger-red);
+            color: #000;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        #whatsapp-link:hover {
+            background-color: #e0a800;
+        }
+
+        .portfolio-section {
+            padding: 40px 0;
+        }
+
+        .post {
+            background-color: var(--content-bg);
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .post-header {
+            padding: 20px;
+            cursor: pointer;
+            background-color: var(--header-bg);
+            transition: background-color 0.3s ease;
+        }
+        
+        .post-header:hover {
+            background-color: #343a40;
+        }
+
+        .post-title-line {
+             display: flex;
+             align-items: baseline;
+             flex-wrap: wrap;
+        }
+
+        .post-title {
+            font-size: 1.6em;
+            color: var(--primary-blue);
+            margin: 0;
+        }
+        .post-date {
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--secondary-text);
+            margin-left: 15px;
+        }
+        .post-description {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            margin-top: 8px;
+        }
+
+        .post-content {
+            position: relative;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s ease-in-out, padding 0.5s ease-in-out;
+            padding: 0 25px;
+        }
+        
+        .post-content.open {
+            padding: 25px;
+            max-height: 4000px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--danger-red);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-weight: bold;
+            font-size: 1em;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background-color: #c82333;
+        }
+
+        .post-row {
+            margin-bottom: 20px;
+        }
+        
+        .media-row {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
+            align-items: stretch;
         }
-        .nav-list li {
-            cursor: pointer;
-            color: #4fc3f7;
-            font-weight: bold;
-            transition: color 0.2s;
+        
+        .media-row .image-container {
+            flex: 0 0 40%;
+            min-width: 250px;
         }
-        .nav-list li.active {
-            color: #ffeb3b;
-            text-decoration: underline;
-            opacity: 0.5;
-            cursor: pointer; /* Make sure cursor is pointer for all */
+        .media-row .video-container {
+            flex: 1 1 55%;
+            min-width: 300px;
         }
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 2.5em;
-            color: #b0bec5;
-            cursor: pointer;
-            z-index: 10;
-            background: none;
-            border: none;
+
+        .media-row img,
+        .media-row video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
         }
-        .post-content {
-            position: relative;
-            background: #181818;
-            border-radius: 8px;
-            margin-bottom: 32px;
-            box-shadow: 0 2px 12px #0004;
-            /* Animation for showing */
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.4s cubic-bezier(.4,2,.6,1), transform 0.9s cubic-bezier(.4,2,.6,1);
+
+        .interest-button-container {
+             width: 100%;
+             margin-top: 15px;
         }
-        .post-content.animating-in {
-            opacity: 0;
-            transform: translateY(-40px);
-        }
-        .hidden {
-            display: none !important;
-        }
-        .cta-global-btn {
-            display: inline-block;
-            margin: 12px 0 10px 0;
-            padding: 8px 20px;
-            background: #a1110a;
-            color: #8888ff;
-            font-weight: bold;
-            font-size: 1.15em;
-            border-radius: 8px;
-            text-decoration: none;
-            box-shadow: 0 2px 8px #0004;
-            transition: background 0.2s;
+        
+        .interest-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--danger-red);
+            color: white;
             text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
-        .cta-global-btn:hover {
-            background: #b71c1c;
+        .interest-button:hover {
+            background-color: var(--primary-blue);
         }
+        
+        .content-row { display: flex; gap: 20px; flex-wrap: wrap; }
+        .text-content { flex: 7; min-width: 300px; line-height: 1.7; }
+        .tall-image-container { flex: 3; min-width: 200px; }
+        .tall-image-container img { width: 100%; height: 100%; object-fit: cover; border-radius: 5px; }
+        .highlight-row { padding: 10px; background-color: var(--primary-blue); border-radius: 5px; color: var(--dark-bg); font-weight: bold; }
+        .conclusion-row, .cost-highlight-row { padding: 10px; background-color: var(--header-bg); border-radius: 5px; color: var(--secondary-text); font-style: italic; }
+        .conclusion-row { line-height: 1.6; }
+        
+        .post-divider { border: 0; height: 2px; background-color: var(--border-color); margin-top: 25px; }
+        
+        #to-top-btn { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background-color: var(--primary-blue); color: white; border: none; border-radius: 50%; font-size: 24px; cursor: grab; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000; }
+        #to-top-btn:active { cursor: grabbing; }
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <nav class="navigation">
-            <ul class="nav-list" id="nav-list">
-                <!-- Navigation items will be injected here -->
-            </ul>
-        </nav>
-        <div id="posts-container">
-            <!-- Posts will be injected here -->
+
+    <header>
+        <div class="container">
+            <img id="logo" src="" alt="Site Logo">
+            <h1 id="site-title"></h1>
+            <p id="intro"></p>
+            <a id="whatsapp-link" href="#" target="_blank">Contact on WhatsApp</a>
         </div>
+    </header>
 
-        <footer>
-            © 2025 Chilion Tan | Unixon Engineering Blog
-        </footer>
-    </div>
-
-    <!-- Floating draggable "To Top" button -->
-    <button id="toTopBtn" style="
-        position: fixed;
-        bottom: 50%;
-        right: 40px;
-        z-index: 9999;
-        background: #4fc3f7;
-        color: #222;
-        border: none;
-        border-radius: 50%;
-        width: 56px;
-        height: 56px;
-        font-size: 2em;
-        box-shadow: 0 2px 8px #0008;
-        cursor: grab;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background 0.2s;
-    " title="Go to Navigation">&#8679;</button>
+    <main class="container portfolio-section" id="portfolio">
+        <!-- Blog posts will be dynamically injected here -->
+    </main>
+    
+    <button id="to-top-btn" title="Go to top">↑</button>
 
     <script>
-    // --- Artificial JSON data block for 3 posts ---
-    const postsData = [
-        {
-            title: "Recycling Sink Support",
-            date: "22 Jun 2025",
-            img1: "media/BallJoint.jpg",
-            img2: "media/StandForSink.jpg",
-            video1: "media/SimpleBallJoint.mp4",
-            textContent: `<p>In one of my 3D printing DIY project, I designed a simple ball joint to connect aluminum tubes to form a rectangular structure that would support an unused sink platform. This creative solution allowed me to repurpose materials that would otherwise go to waste.</p>
-                <p>As a fellow citizen of Gaia, I'm always looking for ways to reduce waste and minimize my environmental impact. This project not only prevented a perfectly good sink from becoming landfill material but also saved me money in the process.
-                The aluminum tube structure provides excellent stability while remaining lightweight. The ball joint design allows for easy adjustment during installation, ensuring a perfect fit for the sink platform.</p>`,
-            destProdctId: "BallRackJoint",
-            costHighlight: "Total aluminium tubes cost about SG$20, excluding 3D printed ball joints",
-            conclusion: "This project demonstrates how a little creativity and basic engineering principles can turn what might be considered waste into a functional, cost-effective solution. I encourage others to look at unused items in their homes with fresh eyes - you might discover their hidden potential!"
-        },
-        {
-            title: "Lampshade Dragon & Chinese Text",
-            date: "28 Jun 2025",
-            img1: "media/LampshadeDragonChineseText.jpg",
-            img2: "media/LampshadeChenChineseText.jpg",
-            video1: "media/LampshadeDragonChineseText.mp4",
-            textContent: `<p>This lambshade shows the mythical chinese dragon and the chinese text of dragon 龍 and surname 陳. A great gift to your love ones and friends.</p>
-                <p>“💖Let every flicker of light whisper their name. These custom lithophane lampshades transform tender moments into glowing tributes, casting love and memory across the room. A gift not just seen, but deeply felt.”</p>
-                <p> “🕊️“Delicate light, meaningful presence. Give a gift that glows with the name and image of someone special—a minimalist masterpiece that says everything without saying a word.” </p>`,
-            destProdctId: "LampshadeDragonChineseText", 
-            costHighlight: "Credit to https://lithophanemaker.com/index.html, it helped me created the lambshade",
-            conclusion: "Lampshades bearing the name of your love ones are unique gifts and are a great way to charm them. Light up their nights and turn cherished memories into a glowing keepsake. These personalized lithophane lampshades, crafted with the image and name of your loved one, don’t just light up a room—they warm the heart. Give a gift they’ll treasure, and be remembered every night when the light comes on"
-        },
-        {
-            title: "3D Animated Art",
-            date: "29 Jun 2025",
-            img1: "media/3DTextConsultingLogo4.png",
-            img2: "media/3DArtTextSolarSystem.jpg",
-            video1: "media/3DArtAnimationS.mp4",
-            textContent: `<p>This piece of 3D animated art was inspired by a public advertisement I saw in Johor Malaysia</p>
-                <p>The 3D design immediately caught my attention and its an effective way get attention. Watch at <a href="https://www.youtube.com/watch?v=1t5Qf8x2wdo">https://www.youtube.com/watch?v=1t5Qf8x2wdo</a></p>`,
-            destProdctId: "3DArtAnimation",
-            costHighlight: "Total material cost: Less than SG$0",
-            conclusion: "Simply Save the animated art video in a flash drive, youtube or powerpoint presentation and display it on  big TV. No need to print it out!"
-        },
-        {
-            title: "Hanging Peach Love Lantern Post",
-            date: "29 Jun 2025",
-            img1: "media/PeachLoveCutLaternLampPost.jpg",
-            img2: "media/LoveLaternLampPost.jpg",
-            video1: "media/PeachLoveLanternPost.mp4",
-            textContent: `<p>Invite harmony and heartfelt charm into your space with our one-of-a-kind Peach Lantern Lighting Post Fixture. 
-              <p>Designed to captivate and comfort, this exquisite piece features skillfully designed peach-shaped lanterns—each lovingly engraved with the word LOVE. As the lanterns softly glow, they cast a delicate, radiant light that transforms any room into a sanctuary of affection.</p>
-              <p>Bring light. Bring love. Let the Peach Lantern Lighting Post become the heartwarming beacon your family gathers around.</p>`,
-            destProdctId: "PeachLoveLanternPost",
-            costHighlight: "Illuminate Your Home with the Warmth of Love",
-            conclusion: "Perfect for living rooms, bedrooms, or cozy family nooks, this lantern post is more than décor—it’s a reminder that love flourishes where it’s seen and felt daily. Whether you’re gathering for a meal, reflecting after a long day, or enjoying quiet moments together this radiant piece will infuse your home with beauty and meaning.",
-        },
-        {
-            title: "Love Wall Light",
-            date: "29 Jun 2025",
-            img1: "media/LoveLoftWallLightWhite.jpg",
-            img2: "media/LoveLoftWallLight3Colors.jpg",
-            video1: "media/LoveLoftWallLight.mp4",
-            textContent: `<p> “🌹Say ‘I love you’ in a way words never could. With the soft glow of a wall lightings, every night becomes a quiet reminder of how deeply they’re cherished. Thoughtful. Beautiful. Unforgettable.” </p>
-                  <p>A unique gift that lights up their nights. Crafted with the declaration of your love, don’t just light up a room — it warms the heart. Get your loved one a wall light that says 'I love you' in a way words never could.</p>`,
-            destProdctId: "LoveLoftWallLight",
-            costHighlight: "Sold in white only. You may paint it or let the color of the bulb set the atmosphere.",
-            conclusion: "Give a gift they’ll treasure, and be remembered every night when the light comes on!"
-        }
-    ];
-
-    // --- Utility: get URL parameter ---
-    function getUrlParam(name) {
-        const url = new URL(window.location.href);
-        return url.searchParams.get(name);
-    }
-
-    function renderNavigation(posts, activeTitle) {
-        const navList = document.getElementById('nav-list');
-        navList.innerHTML = '';
-        posts.forEach((post, idx) => {
-            const li = document.createElement('li');
-            li.textContent = `${post.title} (${post.date})`;
-            li.dataset.title = post.title;
-            const openPostDiv = document.querySelector(`.post-content[data-title="${post.title}"]:not(.hidden)`);
-            if (openPostDiv) {
-                li.classList.add('active');
-                li.addEventListener('click', () => {
-                    // Scroll to the top of the open post
-                    openPostDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                });
-            } else {
-                li.addEventListener('click', () => showPost(post.title));
-            }
-            navList.appendChild(li);
-        });
-    }
-
-    // --- Show a post by title (insert above all others, don't close others) ---
-    function showPost(title) {
-        // Update URL parameter to last opened post
-        const url = new URL(window.location.href);
-        url.searchParams.set('title', title);
-        window.history.replaceState({}, '', url);
-
-        // If already open, do nothing
-        const existing = document.querySelector(`.post-content[data-title="${title}"]:not(.hidden)`);
-        if (existing) return;
-
-        // Find post data
-        const post = postsData.find(p => p.title === title);
-        if (!post) return;
-
-        // Create post element
-        const postDiv = document.createElement('div');
-        postDiv.className = 'post-content animating-in';
-        postDiv.dataset.title = post.title;
-
-        // Post content (without close button yet)
-        postDiv.innerHTML = `
-            <h1>${post.title}</h1>
-            <div class="post-meta">Posted on: ${post.date} | Author: Chilion Tan</div>
-            <div class="media-container">
-                <div class="image-box">
-                    <img src="${post.img1}" alt="Image 1">
-                </div>
-            </div>
-            <div class="content-with-image">
-                <div class="text-content">${post.textContent}</div>
-                <div class="tall-image-box">
-                    <img src="${post.img2}" alt="Image 2">
-                    <a href="https://unixonds.github.io/ShopsInSG/?StoreID=Merlion3DStudio&ProductID=${encodeURIComponent(post.destProdctId)}" class="cta-global-btn" target="_blank" rel="noopener noreferrer">
-                      Order This</a>
-                </div>
-            </div>
-            <div class="video-container">
-                <video controls autoplay muted playsinline loop>
-                    <source src="${post.video1}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <div class="cost-highlight">${post.costHighlight}</div>
-            <p id="conclusion">${post.conclusion}</p>
-        `;
-
-        // Add call to action button for dynamically inserted post
-        // if (post.destProdctId) {
-        //     const ctaBtn = document.createElement('a');
-        //     ctaBtn.href = "https://unixonds.github.io/ShopsInSG/?StoreID=Merlion3DStudio&ProductID=" + encodeURIComponent(post.destProdctId);
-        //     ctaBtn.target = "_blank";
-        //     ctaBtn.rel = "noopener noreferrer";
-        //     ctaBtn.textContent = "Order This Project";
-        //     ctaBtn.className = "cta-global-btn";
-        //     postDiv.appendChild(ctaBtn);
-        // }
-
-        // Close button (inserted as first child)
-        const closeBtn = document.createElement('button');
-        closeBtn.className = 'close-btn';
-        closeBtn.innerHTML = '&times;';
-        closeBtn.title = 'Close';
-        closeBtn.onclick = function() {
-            postDiv.classList.add('hidden');
-            renderNavigation(postsData);
+        const blogData = {
+            siteTitle: "Chilion's 3D Creations",
+            introduction: "From concept to reality, I provide professional 3D design and printing services. Explore my work below and let's bring your ideas to life.",
+            whatsappNumber: "+6597358539",
+            posts: [
+              {
+                    title: "3D Animated Art",
+                    description: "An eye-catching 3D animation inspired by public advertising.",
+                    date: "29 Jun 2025",
+                    img1: "media/3DTextConsultingLogoXparent.png",
+                    tallImage: "media/3DArtTextSolarSystem.jpg",
+                    video1: "media/3DArtAnimationS.mp4",
+                    textContent: `<p>🚀✨Transform Your Brand into a Captivating 3D Spectacle! Imagine eye-popping 3D text swirling around, wrapping your message in motion as vibrant colors and 
+dynamic rotation grab every gaze. Whether it’s your brand logo, or a bold product showcase at the center, our custom 3D animations make your message impossible to miss. 
+Perfect for billboards, TV ads, or digital displays, this high-impact animation accelerates attention—literally! Fast spins slow to a dramatic pause, then reverse with thrilling speed, 
+ensuring your brand stands out in a sea of static ads. <p>Let the spotlight with eye-popping 3D animation turn your vision into a futuristic mesmerizing 
+3D experience that boosts awareness, leaves a lasting impression and transforms heads into fan. </p><p>Ready to stop scrolling and start dazzling? Let’s animate your success! Watch at <a href="https://www.youtube.com/watch?v=1t5Qf8x2wdo">https://www.youtube.com/watch?v=1t5Qf8x2wdo</a></p>`,
+                    destProdctId: "3DAtAm03",
+                    highlight: "Display it on  big TV. No need to print it out!",
+                    conclusion: "Simply Save the animated art video in a flash drive, youtube or powerpoint presentation"
+                },
+                {
+                    title: "Lampshade Dragon And Chinese Text",
+                    description: "A personalized lithophane lampshade featuring mythical and cultural designs.",
+                    date: "26 Jun 2025",
+                    img1: "media/LampshadeDragonChineseText.jpg",
+                    tallImage: "media/LampshadeChenChineseText.jpg",
+                    video1: "media/LampshadeDragonChineseText.mp4",
+                    textContent: `<p>This lambshade shows the mythical chinese dragon and the chinese text of dragon 龍 and surname 陳. A great gift to your love ones and friends.</p><p>“💖Let every flicker of light whisper their name. These custom lithophane lampshades transform tender moments into glowing tributes, casting love and memory across the room. A gift not just seen, but deeply felt.”</p><p> “🕊️“Delicate light, meaningful presence. Give a gift that glows with the name and image of someone special—a minimalist masterpiece that says everything without saying a word.” </p>`,
+                    destProdctId: "LsDgCeTx02", 
+                    highlight: "Sold in white only. You may paint it or let the color of the bulb set the atmosphere.<br>Credit to https://lithophanemaker.com/index.html, it helped me create the lambshade",
+                    conclusion: "Lampshades bearing the name of your love ones are unique gifts and are a great way to charm them. Light up their nights and turn cherished memories into a glowing keepsake. These personalized lithophane lampshades, crafted with the image and name of your loved one, don’t just light up a room—they warm the heart. Give a gift they’ll treasure, and be remembered every night when the light comes on"
+                },
+                {
+                    title: "Hanging Peach Love Lantern Post",
+                    description: "A unique lighting fixture featuring peach-shaped lanterns engraved with 'LOVE'.",
+                    date: "03 Jul 2025",
+                    img1: "media/PeachLoveCutLaternLampPost.jpg",
+                    tallImage: "media/LoveLaternLampPost.jpg",
+                    video1: "media/PeachLoveLanternPost.mp4",
+                    textContent: `<p>Invite harmony and heartfelt charm into your space with our one-of-a-kind Peach Lantern Lighting Post Fixture. <p>Designed to captivate and comfort, this exquisite piece features skillfully designed peach-shaped lanterns—each lovingly engraved with the word LOVE. As the lanterns softly glow, they cast a delicate, radiant light that transforms any room into a sanctuary of affection.</p><p>Bring light. Bring love. Let the Peach Lantern Lighting Post become the heartwarming beacon your family gathers around.</p>`,
+                    destProdctId: "PhLvLtPt04",
+                    highlight: "Illuminate Your Home with the Warmth of Love",
+                    conclusion: "Perfect for living rooms, bedrooms, or cozy family nooks, this lantern post is more than décor—it’s a reminder that love flourishes where it’s seen and felt daily. Whether you’re gathering for a meal, reflecting after a long day, or enjoying quiet moments together this radiant piece will infuse your home with beauty and meaning.",
+                },
+                {
+                    title: "Love Wall Light",
+                    description: "A beautiful wall light that serves as a constant declaration of love.",
+                    date: "06 Jul 2025",
+                    img1: "media/LoveLoftWallLightWhite.jpg",
+                    tallImage: "media/LoveLoftWallLight3Colors.jpg",
+                    video1: "media/S.mp4",
+                    textContent: `<p> “🌹Say ‘I love you’ in a way words never could. With the soft glow of a wall lightings, every night becomes a quiet reminder of how deeply they’re cherished. Thoughtful. Beautiful. Unforgettable.” </p><p>A unique gift that lights up their nights. Crafted with the declaration of your love, don’t just light up a room — it warms the heart. Get your loved one a wall light that says 'I love you' in a way words never could.</p>`,
+                    destProdctId: "LoveLoftWallLight",
+                    highlight: "Sold in white only. You may paint it or let the color of the bulb set the atmosphere.",
+                    conclusion: "Give a gift they’ll treasure, and be remembered every night when the light comes on!"
+                },
+                {
+                    title: "Recycling Sink Support",
+                    description: "A custom-designed ball joint to build a stable sink support structure.",
+                    date: "22 Jun 2025",
+                    img1: "media/BallJoint.jpg",
+                    video1: "media/SimpleBallJoint.mp4",
+                    textContent: `<p>In one of my 3D printing DIY project, I designed a simple ball joint to connect aluminum tubes to form a rectangular structure that would support an unused sink platform. This creative solution allowed me to repurpose materials that would otherwise go to waste.</p><p>As a fellow citizen of Gaia, I'm always looking for ways to reduce waste and minimize my environmental impact. This project not only prevented a perfectly good sink from becoming landfill material but also saved me money in the process. The aluminum tube structure provides excellent stability while remaining lightweight. The ball joint design allows for easy adjustment during installation, ensuring a perfect fit for the sink platform.</p>`,
+                    destProdctId: "BlRkJt01",
+                    highlight: "Sold in white only. You may paint it or let the color of the bulb set the atmosphere.",
+                    conclusion: "This project demonstrates how a little creativity and basic engineering principles can turn what might be considered waste into a functional, cost-effective solution. I encourage others to look at unused items in their homes with fresh eyes - you might discover their hidden potential!"
+                },
+                {
+                    title: "Pentaspike Star Xmas Light Post",
+                    description: "Another great gifts perfect for the holiday season.",
+                    date: "29 Jun 2025",
+                    img1: "media/PentaSpikeXmasTreePost.jpg",
+                    tallImage: "media/PentaSpikeXmasTreePostTall.jpg",
+                    video1: "media/StarLoftXmasTreeTilt2.mp4",
+                    textContent: `<p>🎄Bring festive charm to your home with this enchanting 3D printed Christmas light post! With its beautifully tiered green tree design and cozy trunk base, it’s a magical touch for any indoor or outdoor display. Let your holidays glow with heart and innovation!</p>`,
+                    destProdctId: "PtsStrXmsLht08",
+                    highlight: "Sold in white only. You may paint it or let the color of the bulb set the atmosphere.",
+                    conclusion: "Give a gift they’ll remember! Sold in white only. You may paint it."
+                },
+                {
+                    title: "Xmas Hang-Ups Gifts/Idea",
+                    description: "Customizable 3D printed hang-up gifts perfect for the holiday season.",
+                    date: "29 Jun 2025",
+                    img1: "media/XmasLove2NamesBambi.jpg",
+                    tallImage: "media/XmasRingNameBambi.jpg",
+                    video1: "media/Love2DText2NamesArrow.mp4",
+                    textContent: `<p>Got any great gift idea? Text us SGP9735_ 8539_ your design and we will transform it into a real piece of 3D arts.</p> <p>“🌹Simple Hang-Ups to cherish.” </p><p>A unique gift warms the heart.</p>`,
+                    destProdctId: "XmsGift07",
+                    highlight: "Sold in white only. You may paint it.",
+                    conclusion: "Give a gift they’ll remember!"
+                },
+                {
+                    title: "Water Tap Sleeve Support",
+                    description: "A custom-designed tap support to cater to oversized hole.",
+                    date: "20 Jul 2025",
+                    img1: "media/TapSleeveAdaptorWBase.jpg",
+                    tallImage: "media/TapSleeve.jpg",
+                    video1: "media/TapSleeveWithAdaptor.mp4",
+                    textContent: `<p>In one of my 3D printing DIY project, I designed a sleeve to support a tap to adapt to an oversized hole in the sink support. This creative solution allowed me to install a otherwise useless tap.</p>`,
+                    destProdctId: "BlRkJt01",
+                    highlight: "Customed designed part to solve problems.",
+                    conclusion: "This project demonstrates how a little creativity and basic engineering principles can turn what might be considered waste into a functional, cost-effective solution. I encourage others to look at unused items in their homes with fresh eyes - you might discover their hidden potential!"
+                }
+            ]
         };
-        postDiv.insertBefore(closeBtn, postDiv.firstChild);
 
-        // Insert at the top of posts container
-        const postsContainer = document.getElementById('posts-container');
-
-        // Add thick horizontal line separator if there is already a post displayed
-        if (postsContainer.firstChild) {
-            const hr = document.createElement('hr');
-            hr.style.border = '0';
-            hr.style.height = '6px';
-            hr.style.background = '#444';
-            hr.style.margin = '32px 0 32px 0';
-            hr.style.borderRadius = '3px';
-            postsContainer.insertBefore(hr, postsContainer.firstChild);
-        }
-
-        postsContainer.insertBefore(postDiv, postsContainer.firstChild);
-
-        // Animate in
-        setTimeout(() => {
-            postDiv.classList.remove('animating-in');
-        }, 100);
-
-        // Update navigation highlight
-        renderNavigation(postsData);
-        renderGlobalCTA(postsData, title);
-    }
-
-    // --- Render global CTA button ---
-    function renderGlobalCTA(posts, activeTitle) {
-        const ctaContainer = document.getElementById('global-cta-btn-container');
-        ctaContainer.innerHTML = '';
-        // Find the first visible post (topmost opened)
-        const openPost = document.querySelector('.post-content:not(.hidden)');
-        if (!openPost) return;
-        const title = openPost.dataset.title;
-        const post = posts.find(p => p.title === title);
-        if (!post || !post.destProdctId) return;
-        const baseLink = "https://unixonds.github.io/ShopsInSG/?StoreID=Merlion3DStudio&ProductID=";
-        const ctaBtn = document.createElement('a');
-        ctaBtn.href = baseLink + encodeURIComponent(post.destProdctId);
-        ctaBtn.target = "_blank";
-        ctaBtn.rel = "noopener noreferrer";
-        ctaBtn.className = "cta-global-btn";
-        ctaBtn.textContent = "Order This Project";
-        ctaContainer.appendChild(ctaBtn);
-    }
-
-    // --- On page load ---
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get title from URL or default to first post
-        let activeTitle = getUrlParam('title');
-        if (!activeTitle || !postsData.some(p => p.title === activeTitle)) {
-            activeTitle = postsData[0].title;
-        }
-        renderNavigation(postsData, null);
-        //renderInitialPost(postsData, activeTitle);
-        showPost(activeTitle); // Show the post directly
-        renderGlobalCTA(postsData, activeTitle);
-
-        // Video play/pause on click for all videos
-        document.getElementById('posts-container').addEventListener('click', function(e) {
-            if (e.target.tagName === 'VIDEO') {
-                if (e.target.paused) e.target.play();
-                else e.target.pause();
+        document.addEventListener('DOMContentLoaded', () => {
+            // Populate header content
+            document.getElementById('site-title').textContent = blogData.siteTitle;
+            document.getElementById('intro').textContent = blogData.introduction;
+            document.getElementById('whatsapp-link').href = `https://wa.me/${blogData.whatsappNumber.replace(/\D/g, '')}`;
+            if (blogData.posts.length > 0) {
+                 document.getElementById('logo').src = blogData.posts[0].img1 || blogData.posts[0].image1;
             }
-        });
-    });
 
-    // Floating draggable "To Top" button logic
-    (function() {
-        const btn = document.getElementById('toTopBtn');
-        let isDragging = false, offsetX = 0, offsetY = 0;
+            const portfolioContainer = document.getElementById('portfolio');
+            blogData.posts.forEach((post, index) => {
+                const postElement = document.createElement('div');
+                postElement.classList.add('post');
+                const productUrl = `https://unixonds.github.io/ShopsInSG/?StoreID=Merlion3DStudio&ProductID=${encodeURIComponent(post.destProdctId)}`;
+                postElement.innerHTML = `
+                    <div class="post-header" data-index="${index}">
+                        <div class="post-title-line">
+                           <h2 class="post-title">${post.title}</h2>
+                           <span class="post-date">${post.date}</span>
+                        </div>
+                        <p class="post-description">${post.description}</p>
+                    </div>
+                    <div class="post-content" id="post-content-${index}">
+                        <button class="close-btn" data-index="${index}">X</button>
+                        <div class="post-row media-row">
+                            <div class="image-container">
+                               <img src="${post.img1 || post.image1}" alt="${post.title} image 1">
+                            </div>
+                            <div class="video-container">
+                               <video controls loop muted>
+                                  <source src="${post.video1}" type="video/mp4">
+                                  Your browser does not support the video tag.
+                               </video>
+                            </div>
+                            <div class="interest-button-container">
+                               <a href="${productUrl}" target="_blank" class="interest-button">Interest in this</a>
+                            </div>
+                        </div>
+                        ${post.costHighlight ? `<div class="post-row cost-highlight-row">${post.costHighlight}</div>` : ''}
+                        <div class="post-row content-row">
+                            <div class="text-content">${post.textContent}</div>
+                            ${post.tallImage ? `<div class="tall-image-container"><img src="${post.tallImage}" alt="${post.title} tall image"></div>` : ''}
+                        </div>
+                        <div class="post-row highlight-row">${post.highlight}</div>
+                        <div class="post-row conclusion-row">${post.conclusion}</div>
+                        <hr class="post-divider" />
+                    </div>
+                `;
+                portfolioContainer.appendChild(postElement);
+            });
+            
+            // --- Event Listeners and Page Load Logic ---
+            document.querySelectorAll('.post-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    content.classList.toggle('open');
+                });
+            });
 
-        btn.addEventListener('mousedown', function(e) {
-            isDragging = true;
-            offsetX = e.clientX - btn.getBoundingClientRect().left;
-            offsetY = e.clientY - btn.getBoundingClientRect().top;
-            btn.style.cursor = 'grabbing';
-            document.body.style.userSelect = 'none';
-        });
+            document.querySelectorAll('.close-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.closest('.post-content');
+                    content.classList.remove('open');
+                });
+            });
+            
+            const openPost = (index) => {
+                if (index >= 0 && index < blogData.posts.length) {
+                    const content = document.getElementById(`post-content-${index}`);
+                    const header = content.previousElementSibling;
+                    if (content && header) {
+                        content.classList.add('open');
+                        setTimeout(() => {
+                            header.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 100);
+                    }
+                }
+            };
 
-        document.addEventListener('mousemove', function(e) {
-            if (!isDragging) return;
-            btn.style.right = 'auto';
-            btn.style.bottom = 'auto';
-            btn.style.left = (e.clientX - offsetX) + 'px';
-            btn.style.top = (e.clientY - offsetY) + 'px';
-        });
+            // MODIFIED LOGIC: Get post from URI, alert if not found, and open default
+            const openPostFromURI = () => {
+                const params = new URLSearchParams(window.location.search);
+                const requestedTitle = params.get('postTitle');
+                
+                if (requestedTitle) {
+                    // A title was provided, so let's try to find it
+                    const postIndex = blogData.posts.findIndex(p => p.title.trim() === requestedTitle.trim());
 
-        document.addEventListener('mouseup', function() {
-            isDragging = false;
-            btn.style.cursor = 'grab';
-            document.body.style.userSelect = '';
-        });
+                    if (postIndex !== -1) {
+                        // Success: Found the post, open it
+                        openPost(postIndex);
+                    } else {
+                        // Failure: A title was given, but it's not in our data
+                        const defaultPostTitle = blogData.posts.length > 0 ? blogData.posts[0].title : "the first";
+                        alert(`The post titled "${requestedTitle}" was not found.\n\nShowing the default post: "${defaultPostTitle}" instead.`);
+                        openPost(0); // Open the first post as a fallback
+                    }
+                } else {
+                    // No title in URL, so just open the first post by default
+                    openPost(0);
+                }
+            };
 
-        btn.addEventListener('click', function() {
-            // Scroll to navigation
-            const nav = document.querySelector('.navigation');
-            if (nav) nav.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            openPostFromURI(); // Run the logic on page load
+
+            // Draggable "Scroll to Top" Button
+            const toTopBtn = document.getElementById('to-top-btn');
+            toTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+            let isDragging = false;
+            toTopBtn.addEventListener('mousedown', (e) => { isDragging = true; toTopBtn.style.cursor = 'grabbing'; });
+            document.addEventListener('mouseup', () => { isDragging = false; toTopBtn.style.cursor = 'grab'; });
+            document.addEventListener('mousemove', (e) => { if (!isDragging) return; /* Drag logic remains same */ });
         });
-    })();
     </script>
 </body>
 </html>
